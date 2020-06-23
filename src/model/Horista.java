@@ -7,8 +7,14 @@ public class Horista extends Funcionario{
 	
 	public Horista(int numRegistro, String nome, float valorHora, int numeroHoras) {
 		super(numRegistro,nome);
-		this.valorHora = valorHora;
-		this.numeroHoras = numeroHoras;
+		
+		if (valorHora < 0 || numeroHoras < 0) {
+			throw new RuntimeException("O valor da hora ou o numero de horas não podem ser negativos!");
+		} else {
+			this.valorHora = valorHora;
+			this.numeroHoras = numeroHoras;
+		}
+		
 	}
 	
 	public float calcularSalario() {
@@ -20,7 +26,11 @@ public class Horista extends Funcionario{
 	}
 
 	public void setValorHora(float valorHora) {
+		try {
 		this.valorHora = valorHora;
+		} catch (RuntimeException e) {
+			System.out.println("Só pode ser numero --" + e.getMessage());
+		}
 	}
 
 	public int getNumeroHoras() {

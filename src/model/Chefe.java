@@ -7,6 +7,15 @@ public class Chefe extends Funcionario {
 	
 	public Chefe(int numRegistro, String nome, float salarioBase, float adicionalFuncao, float beneficioTerno) {
 		super(numRegistro, nome);
+		
+		if (salarioBase < 0) {
+			throw new RuntimeException("Salario Base não pode ser negativo!");
+		} else if (adicionalFuncao < 0){ 
+			throw new RuntimeException("Adicional Funcao não pode ser negativo!");
+		} else if (beneficioTerno < 0) {
+			throw new RuntimeException("Beneficio terno não pode ser negativo!");
+		}
+		
 		this.salarioBase = salarioBase;
 		this.adicionalFuncao = adicionalFuncao;
 		this.beneficioTerno = beneficioTerno;

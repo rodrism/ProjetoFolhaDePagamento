@@ -5,6 +5,9 @@ public abstract class Funcionario {
 	protected int    numRegistro;
 	
 	public Funcionario(int numRegistro, String nome) {
+		if (numRegistro < 0 || nome == "") {
+			throw new RuntimeException("Número de Registro e nome não podem estar em branco! ou negativo");
+		}
 		this.numRegistro = numRegistro;
 		this.nome        = nome;
 	}
